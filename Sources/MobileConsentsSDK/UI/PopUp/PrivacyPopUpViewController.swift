@@ -21,7 +21,7 @@ final class PrivacyPopUpViewController: UIViewController, PrivacyPopupProtocol {
         button.setTitle("Accept selected", for: .normal)
         button.titleLabel?.numberOfLines = 2
         button.titleLabel?.lineBreakMode = .byWordWrapping
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        button.titleLabel?.font = navigationButtonsFont ?? UIFont.preferredFont(forTextStyle: .body)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         return button
     }()
@@ -32,7 +32,7 @@ final class PrivacyPopUpViewController: UIViewController, PrivacyPopupProtocol {
         button.setTitle("Accept all", for: .normal)
         button.titleLabel?.numberOfLines = 2
         button.titleLabel?.lineBreakMode = .byWordWrapping
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        button.titleLabel?.font = navigationButtonsFont ?? UIFont.preferredFont(forTextStyle: .body)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         return button
     }()
@@ -111,11 +111,13 @@ final class PrivacyPopUpViewController: UIViewController, PrivacyPopupProtocol {
     private var sections = [Section]()
     private let fontSet: FontSet
     private var data: PrivacyPopUpData? = nil
+    private let navigationButtonsFont: UIFont?
     
     init(viewModel: PrivacyPopUpViewModelProtocol, accentColor: UIColor, fontSet: FontSet) {
         self.viewModel = viewModel
         self.accentColor = accentColor
         self.fontSet = fontSet
+        self.navigationButtonsFont = fontSet.navigationButtonsFont
         super.init(nibName: nil, bundle: nil)
     }
     

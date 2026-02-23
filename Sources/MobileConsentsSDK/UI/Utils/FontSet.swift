@@ -2,15 +2,17 @@ import UIKit
 
 @objc
 public class FontSet: NSObject {
-    @objc public init(largeTitle: UIFont, body: UIFont, bold: UIFont) {
+    @objc public init(largeTitle: UIFont, body: UIFont, bold: UIFont, navigationButtonsFont: UIFont? = nil) {
         self.largeTitle = largeTitle
         self.body = body
         self.bold = bold
+        self.navigationButtonsFont = navigationButtonsFont
     }
     
     public let largeTitle: UIFont
     public let body: UIFont
     public let bold: UIFont
+    public let navigationButtonsFont: UIFont?
 }
 
 @objc public extension FontSet {
